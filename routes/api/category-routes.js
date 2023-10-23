@@ -72,4 +72,4 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-module.exports = categoryRoutes;
+module.exports = router;

@@ -15,7 +15,7 @@ Category.init(
     name: {
       type: DataTypes.STRING,
       allowNull: false
-    },
+    }
   },
   {
     // Link to database connection
