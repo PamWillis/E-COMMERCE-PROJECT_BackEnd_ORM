@@ -4,43 +4,31 @@ const { Category, Product, ProductTag, Tag } = require('../../models');
 // find all tags
 // be sure to include its associated Product data
 
-router.get('/', (req, res) => {
-
-  Tag.findAll({
+router.get('/', async (req, res) => {
+  try {
+  const tagData = await Tag.findAll( {
     include: [
       { model: Product, attributes: ['id', 'product_name', 'price', 'stock'], through: ProductTag }
     ]
   })
-
-    .then(tagData => res.json(tagData))
-
-    .catch(err => {
-      console.log(err)
-      res.status(500).json(err);
-
-    });
+   res.status(200).json(tagData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
-
-
-
 // find a single tag by its `id`
 // be sure to include its associated Product data
-router.get('/:id', (req, res) => {
-
-Tag.findOne({
-  where: { id: req.params.id },
+router.get('/:id', async (req, res) => {
+  try {
+const tagData = await Tag.findByPk(req.params.id, {
   include: [
     { model: Product, attributes: ['id', 'product_name', 'price', 'stock'], through: ProductTag }
   ]
 })
-
-  .then(tagData => res.json(tagData))
-
-  .catch(err => {
-    console.log(err)
-    res.status(500).json(err);
-
-  });
+res.status(200).json(tagData);
+} catch (err) {
+  res.status(500).json(err);
+}
 });
 
 
@@ -48,10 +36,9 @@ Tag.findOne({
 router.post('/', async (req, res) => {
   try {
     const tagData = await Tag.create({
-      id: req.body.id,
-      name: req.body.name,
+      tag_name: req.body.tag_name,
     });
-    res.status(200).json(categoryData);
+    res.status(200).json(tagData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -77,7 +64,7 @@ router.put('/:id', async (req, res) => {
       await updatedTag.setTags(existingTags);
     }
 
-    res.status(200).json(updatedTag);
+    res.status(200).json({message: 'Your Tag has been updated'});
   } catch (err) {
     res.status(400).json(err);
   }
@@ -95,7 +82,7 @@ router.delete('/:id', async (req, res) => {
       return;
     }
 
-    res.status(200).json(tagData);
+    res.status(200).json({message: '!Your tag has been deleted'});
   } catch (err) {
     res.status(500).json(err);
   }
