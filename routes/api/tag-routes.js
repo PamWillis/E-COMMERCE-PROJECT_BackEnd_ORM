@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Category, Product, ProductTag, Tag } = require('../../models');
+const { Product, ProductTag, Tag } = require('../../models');
 
 // find all tags
 // be sure to include its associated Product data
@@ -66,7 +66,7 @@ router.put('/:id', async (req, res) => {
 
     res.status(200).json({message: 'Your Tag has been updated'});
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json('No Tag with this id');
   }
 });
 

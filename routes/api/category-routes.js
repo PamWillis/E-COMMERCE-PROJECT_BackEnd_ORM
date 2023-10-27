@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Category, Product } = require('../../models');
+const { Category } = require('../../models');
 
 
 //finding all categories
@@ -69,4 +69,5 @@ router.delete('/:id', (req, res) => {
 			res.status(500).json(err);
 		});
 });
+
 module.exports = router;
