@@ -11,7 +11,10 @@
 ## &nbsp;&nbsp;&nbsp;  Installation  
     This repository can be downloaded and then in the terminal enter npm init. Start the server from (nodemon server.js). The server will continue to run until you hit control c.
 
-## &nbsp;&nbsp;&nbsp;  Usage  
+## &nbsp;&nbsp;&nbsp;  Usage     
+ A video showing the walk thru:  
+[Click here](https://drive.google.com/file/d/1mPXF1I9a6ckusMDcNlx0ip_VsjnSGgKz/view?usp=drive_link)  
+  
     By using insomnia you can add items using GET. New items can be created by using POST. Updated items can be done by PUT, and deleting items can be done by DEL. All Categories, Products and Tags can be manipulated in theis manner. See examples (Note where the id is added in the URL in order to make changes by ID, and also the JSON that needs to be added in order to create or update a category):
 ![MockUp](img_readme/GET_Category.png)
 ![MockUp](img_readme/GET_byId_Category.png)
